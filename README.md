@@ -142,3 +142,161 @@ End Sub
 | LineColorDown | Color | Line color when speed decreases | Red `(231,76,60)` |
 | Smoothness | Integer | Smoothness level `(1-10)` | `7` |
 | UpdateDelay | Integer | Update interval in milliseconds `(500-1500)` | `700` |
+
+## ⚙️ Behavior Properties
+
+| Property    | Type      | Description              | Default |
+| ----------- | --------- | ------------------------ | ------- |
+| `MaxSpeed`  | `Double`  | Maximum scale value      | `10`    |
+| `AutoStart` | `Boolean` | Auto-start monitoring    | `True`  |
+| `IsRunning` | `Boolean` | Current monitoring state | `False` |
+| `MaxPoints` | `Integer` | Maximum history points   | `60`    |
+
+---
+
+## 🖥️ Display Properties
+
+| Property      | Type      | Description        | Default |
+| ------------- | --------- | ------------------ | ------- |
+| `ShowSpeed`   | `Boolean` | Show current speed | `True`  |
+| `ShowMax`     | `Boolean` | Show maximum speed | `False` |
+| `ShowMin`     | `Boolean` | Show minimum speed | `False` |
+| `ShowAverage` | `Boolean` | Show average speed | `False` |
+| `ShowChange`  | `Boolean` | Show speed change  | `False` |
+
+---
+
+## 🎯 Target Label Properties
+
+| Property             | Type    | Description             |
+| -------------------- | ------- | ----------------------- |
+| `TargetLabelSpeed`   | `Label` | Label for current speed |
+| `TargetLabelMax`     | `Label` | Label for maximum speed |
+| `TargetLabelMin`     | `Label` | Label for minimum speed |
+| `TargetLabelAverage` | `Label` | Label for average speed |
+| `TargetLabelChange`  | `Label` | Label for speed change  |
+
+---
+
+## 🔧 Methods
+
+### Public Methods
+
+| Method                         | Description                      |
+| ------------------------------ | -------------------------------- |
+| `StartMonitoring()`            | Start network speed monitoring   |
+| `StopMonitoring()`             | Stop network speed monitoring    |
+| `ResetStatistics()`            | Reset all statistics and history |
+| `UpdateSpeed(speed As Double)` | Manually update the speed value  |
+
+---
+
+### Read-Only Properties
+
+| Property             | Description                            |
+| -------------------- | -------------------------------------- |
+| `IsMonitoringActive` | Returns `True` if monitoring is active |
+| `CurrentValue`       | Current speed value                    |
+| `MaxValue`           | Maximum recorded speed                 |
+| `MinValue`           | Minimum recorded speed                 |
+| `AverageValue`       | Average speed                          |
+
+---
+
+# 🖥️ User Interface
+
+## Main Components
+
+* **Title Bar** - Customizable title text.
+* **Speed Value** - Current speed displayed in MB/s.
+* **Sparkline Chart** - Smooth animated line with glow effects.
+* **Reference Marks** - `0` and `Max` values with tick marks.
+* **Grid Lines** - Subtle background grid.
+* **Statistics Panel** - Displays all statistics in an organized layout.
+
+# ☑️ CheckBox Controls
+
+* **Start/Stop Monitor** - Toggle monitoring.
+* **Show Speed** - Show or hide the current speed.
+* **Show Max** - Show or hide the maximum speed.
+* **Show Min** - Show or hide the minimum speed.
+* **Show Average** - Show or hide the average speed.
+* **Show Change** - Show or hide the percentage change.
+* **Reset Stats** - Reset all statistics.
+
+---
+
+# 📝 Code Structure
+
+```text
+Network-Speed-Monitor/
+├── ArrowIndicator.vb         # Main control class
+├── MainForm.vb               # Example form implementation
+├── MainForm.Designer.vb      # Form designer code
+└── README.md                 # This file
+```
+
+---
+
+# 🎨 Design Features
+
+## Sparkline Chart
+
+* **Anti-aliased Rendering** - Smooth and professional appearance.
+* **Glow Effect** - Subtle glow surrounding the line.
+* **Gradient Fill** - Beautiful gradient beneath the chart line.
+* **Animated Point** - Pulsing endpoint with glow animation.
+* **Color Coding** - Line color changes according to trend direction.
+
+---
+
+## 🚀 Performance Optimizations
+
+* **Double Buffering** - Eliminates flickering during redraw.
+* **Async/Await** - Non-blocking network monitoring.
+* **Smart Smoothing** - Weighted moving average for smoother output.
+* **Efficient Painting** - Redraws only when necessary.
+* **Memory Management** - Automatic cleanup when disposed.
+
+---
+
+# 🐛 Troubleshooting
+
+## Control Doesn't Appear in the Toolbox
+
+1. Build the project.
+2. If it still doesn't appear, restart Visual Studio.
+3. Right-click **Toolbox** → **Choose Items...** → **Browse...** → Select your compiled DLL.
+
+---
+
+## Design Mode Errors
+
+The control automatically detects **Design Mode** and disables monitoring while the designer is open.
+
+---
+
+## Network Interface Not Found
+
+* Ensure an active network connection is available.
+* The control automatically retries every second.
+* Check Windows Firewall or network security settings.
+
+---
+
+## Performance Issues
+
+* Reduce **Smoothness** to `1-5`.
+* Increase **UpdateDelay** to `1000-1500 ms`.
+* Reduce **MaxPoints** to `20-40`.
+
+---
+
+# 📋 Requirements
+
+| Requirement          | Value                     |
+| -------------------- | ------------------------- |
+| **.NET Framework**   | 4.6.1 or higher           |
+| **Operating System** | Windows 7 or higher       |
+| **Permissions**      | Internet / Network access |
+
